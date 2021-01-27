@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <RootNamespace>DamnTabs</RootNamespace>
+    <UseWindowsForms>true</UseWindowsForms>
+    <NeutralLanguage>en</NeutralLanguage>
+    <Copyright>©2021, Nicole Goertzen</Copyright>
+    <AssemblyVersion>2.0.1.0</AssemblyVersion>
+    <FileVersion>2.0.1.0</FileVersion>
+    <PackageReleaseNotes>A new improved Damn Tabs!
+Fixed several bugs.</PackageReleaseNotes>
+    <Version>2.0.1.0</Version>
+    <Authors>Nicole Goertzen</Authors>
+    <Description>Fixes Un-uniform indentation to be Uniform!!!!!</Description>
+    <PackageTags>Word Processing</PackageTags>
+    <PackageLicenseExpression>Free to distribute in whole non-comercially, or in part via decompilation for both comercial and non-comercial as long as the parts used are atributed to the author in source or otherwise.</PackageLicenseExpression>
+    <ApplicationIcon></ApplicationIcon>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>embedded</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DocumentFormat.OpenXml" Version="2.12.1" />
+  </ItemGroup>
+
+</Project>
