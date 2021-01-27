@@ -1,4 +1,5 @@
-﻿using System;
+﻿// 
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -84,9 +85,6 @@ namespace DamnTabs
                          where p.GetFirstChild<Run>() != null               // Checks if a run exists
                          && p.ParagraphProperties != null                   // Checks if w:pPr exists
                          && p.ParagraphProperties.Indentation != null       // Checks if w:ind exists
-                         //&& p.ParagraphProperties.Indentation.HasAttributes // Checks if w:ind has Attributes
-                         //from attr in p.ParagraphProperties.Indentation.GetAttributes()
-                         //where attr.LocalName == "firstLine"
                          && p.ParagraphProperties.Indentation.FirstLine != null
                          select p;
 
@@ -120,8 +118,6 @@ namespace DamnTabs
 
         private void ReplaceTabs(Document doc)
         {
-            // Init Progress Bar
-
             // TODO: Can we improve?
 
             var indTally = new Dictionary<string, int>(3);
@@ -131,9 +127,6 @@ namespace DamnTabs
                        let p = (Paragraph)bodyChild                       // WE MAKE NO ASSUMPTIONS:
                        where p.ParagraphProperties != null                // Checks if w:pPr exists
                        && p.ParagraphProperties.Indentation != null       // Checks if w:ind exists
-                       //&& p.ParagraphProperties.Indentation.HasAttributes // Checks if w:ind has Attributes
-                       //from attr in p.ParagraphProperties.Indentation.GetAttributes()
-                       //where attr.LocalName == "firstLine"
                        && p.ParagraphProperties.Indentation.FirstLine != null
                        select p.ParagraphProperties.Indentation.FirstLine;
             int indsCount = inds.Count();
@@ -151,6 +144,8 @@ namespace DamnTabs
             int badRunsCount = badRuns.Count();
 
             toolStripStatusLabel1.Text = "Scanning Document (2/2)";
+
+            // Init Progress Bar
             InitProgressBar(indsCount + badRunsCount);
 
             foreach (var ind in inds)
